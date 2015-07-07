@@ -1,0 +1,40 @@
+@mixin transition($property: all, $duration: 0.3s, $easing: ease-out) {
+	transition: $property $duration, $easing;
+}
+@mixin font-face($font-family, $file-path, $font-weight, $font-style) {
+  @font-face {
+    font-family: $font-family;
+      src: url('#{$file-path}.eot');
+      src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
+           url('#{$file-path}.woff') format('woff'),
+           url('#{$file-path}.ttf') format('truetype'),
+           url('#{$file-path}.svg##{$font-family}') format('svg');
+    font-weight: $font-weight;
+    font-style: $font-style;
+  }
+  // Chrome for Windows rendering fix: http://www.adtrak.co.uk/blog/font-face-chrome-rendering/
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    @font-face {
+      font-family: $font-family;
+        src: url('#{$file-path}.svg##{$font-family}') format('svg');
+    }
+  }
+}
+
+@include font-face('Montserrat', icon-font-path'Montserrat-Regular', normal, normal);
+@include font-face('Montserrat', icon-font-path'Montserrat-ExtraBold', 600, normal);
+
+@media screen and (min-width: $screen-xs-min) {
+	.container {
+		max-width: 678px;
+	}
+}
+
+@media screen and (min-width: $screen-lg-min) {
+	.home {
+		.container {
+			max-width: 100%;
+			width: 100%;
+		}
+	}
+}
