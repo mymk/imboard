@@ -2,8 +2,8 @@
   <article <?php post_class(); ?>>
 
     <figure class="featured">
-      <div class="filter" style="background-image:url('<?= wp_get_attachment_url( get_post_thumbnail_id($post->ID) );?>')"></div>
-      <?php the_post_thumbnail('full' , ['class' => 'img-responsive']); ?>
+      <div class="filter" style="background-image:url('<?= wp_get_attachment_url(get_post_thumbnail_id($post->ID)); ?>')"></div>
+      <?php the_post_thumbnail('full', ['class' => 'img-responsive']); ?>
     </figure>
     <div class="container">
       <header>
@@ -14,7 +14,7 @@
           <?php the_content(); ?>
       </div>
       <footer>
-      <a href="<?php echo get_permalink(get_adjacent_post(false,'',true)); ?>" id="nextPost" class="btn btn-primary btn-lg">next</a>
+      <a href="<?php echo get_permalink(get_adjacent_post(false, '', true)); ?>" id="nextPost" class="btn btn-primary btn-lg">next</a>
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
         Commentaires
@@ -36,7 +36,7 @@
       <div class="modal-body">
         <section id="comments" class="comments">
         <?php if (have_comments()) : ?>
-          <h2><?php printf(_nx('One response to &ldquo;%2$s&rdquo;', '%1$s responses to &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'sage'), number_format_i18n(get_comments_number()), '<span>' . get_the_title() . '</span>'); ?></h2>
+          <h2><?php printf(_nx('One response to &ldquo;%2$s&rdquo;', '%1$s responses to &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'sage'), number_format_i18n(get_comments_number()), '<span>'.get_the_title().'</span>'); ?></h2>
 
           <ol class="comment-list">
             <?php wp_list_comments(['style' => 'ol', 'short_ping' => true]); ?>
@@ -54,7 +54,7 @@
               </ul>
             </nav>
           <?php endif; ?>
-        <?php endif; // have_comments() ?>
+        <?php endif; // have_comments()?>
 
         <?php if (!comments_open() && get_comments_number() != '0' && post_type_supports(get_post_type(), 'comments')) : ?>
           <div class="alert alert-warning">
